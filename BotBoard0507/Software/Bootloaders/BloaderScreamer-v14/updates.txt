@@ -1,0 +1,96 @@
+
+    1-4-04
+    Copyright Spark Fun Electronics© 2004
+    
+    Boot loading on the 16F877A
+    This is an adaptation from the Bloader written for the 16F819
+    
+    1-4-04 See the boot loader for the 16F819 for the first comments on this project
+           Ahah! The PICAXE uses the EEProm memory, not the program memory.
+           This is how they can use the 12F675 w/o flash program editing.
+           
+           The 16F819 is special in that you can edit the program memory but it is four word 
+           increments. This makes the boot vector editing a little difficult.
+           I am going to move to the 16F87x series (namely the 16F877A for now) because I need
+           to get the hardware UART working, as well as the new program editing (1 word at a time)
+           rountines working.
+           
+           Also, at 20MHz, serial IO should be much fast - ie ~57600bps.
+
+    1-6-04 Dah! The 16F877 Program write protocol is different from the 16F877A protocol. Jeesh!
+           The 16F877A is the same as the 16F819 without the need to erase 32 words at a time.
+    
+           After correcting some silly mistakes, everything seems to be working. Currently 188 words.
+    
+    1-7-04 Just a few errors left. If the record length is less that a multiple of four that the
+           program write routine will not complete the write. This is seen usually in the very last
+           words of the program. This error is going to be corrected within the VB controller by
+           padding all transmission to a full multiple of 4.
+
+    1-11-04 After a few hours of debugging, I finally figured out that the compiler was not properly
+            compiling the bloader function when it was not specifically called from a function. This is
+            most likely an optimization that is killing some memory jumps within bloader.
+            
+            The current boot vector: 158A 160A 2F8B
+            The current return vector: 118A 120A 28??  06
+            
+            Okay, everything was hunky dory until we started testing with large hex files. The bloader
+            vector is being over written by values found within memory area 1F8. 1F8 / 2 = FC or 252.
+            Okay, well when the PIC goes to write this specific 16 word chunk of program data, it
+            increments the EEADR point rolling over at 256 -> thus overwrite the boot vector.
+            Added a EEADRH++ on EEADR roll over to the onboard_program_write function to fix this.
+            
+            First time bloader has worked with complete success!!! 
+            181 words total
+            Has checksum, boot delay, and releases all hardware before booting to user program.
+            
+            Time to turn up the dial!! 19200 - Its good!
+            33600 - WTF? Is 33600 a standard value? It's listed in the Microchip 16F87xA datasheet
+
+            Holy shyte! 115200bps works! Higher! Ahh. No support under VB for anything above 115200.
+            Fooey!
+            
+            So bloader will run quite well at 115200bps without any retry errors.
+            
+            It shall be called:
+            Bloader v1.0
+            181 code words
+            
+    1-21-04 Bengt Knudsen (creator of CC5X) was kind enough to help me with the boot vector coding. 
+            The boot vector is now working, and the return to user program vector has been
+            implmented under CC5X. Thank you Bengt!!
+            
+            By setting user programs to ALWAYS start at program location 3 (using the
+            #pragma resetVector 3
+            command, we no longer need to specially load the user's boot vector to high memory.
+            We can just jump to memory location 0x0003 and the user's goto main command will be 
+            there every time. This allows for interrupt vector records that must be located at
+            memory location 0x0004.
+            
+            All user programs MUST use the 
+            #pragma origin 4
+            command in order to get the correct main jump command to appear at memory location 0.
+            Other than that, the boot loader is completely invisible to the end user.
+
+            Bloader v1.1
+            168 code words - Nice!
+            
+    2-12-04 Adding speed control. Hmm. Even with crummby faux shift-level circuitry, Bloader still
+            works at all speeds. 
+            
+            Bloader v1.2
+            Little larger - 186 code words. Now with computer controlled speed selection.
+            
+    6-2-04  Bloader v1.3
+            Recompiled for 16F873A.
+            Now uses the same boot vector protection found in Bloader for the 16F88
+            
+            Bloader now transmits the complete Bloader Address to Screamer. This allows PICs of
+            varying sizes to be used (877A - 8k, 873A - 4k, 88 - 4k, 819 - 2k). Screamer uses
+            the address to make sure the boot loader is not over-written.
+    
+    6-15-04 Bloader v1.4 has now been tested and supports:
+            16F877A: 20MHz, 4MHz
+            16F876A: 20MHz, 4MHz
+            16F873A: 20MHz, 4MHz
+            16F88: 20MHz, 4MHz, 8MHz Internal

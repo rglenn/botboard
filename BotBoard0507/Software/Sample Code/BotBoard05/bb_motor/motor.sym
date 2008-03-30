@@ -1,0 +1,203 @@
+__S0 2100 0
+__S1 A0 0
+_main 5B 0 CODE
+_exit 24 0 CODE
+start 24 0 CODE
+__Hintsave_0 72 0 COMBANK
+__Lintsave_0 71 0 COMBANK
+__Hintcode 10 0 CODE
+__Lintcode D 0 CODE
+__Hintsave_1 A0 0
+__Lintsave_1 A0 0
+__Hintsave_2 A0 0 BANK2
+__Lintsave_2 A0 0 BANK2
+__Hintsave A0 0
+__Lintsave A0 0
+_Motor1Speed 20 0 BANK0
+_Motor2Speed 21 0 BANK0
+_Motor3Speed 22 0 BANK0
+_Motor4Speed 23 0 BANK0
+__Hintsave_3 A0 0 BANK3
+__Lintsave_3 A0 0 BANK3
+__Hreserved 1 0 CODE
+__Lreserved 0 0 CODE
+__Hcode A0 0
+__Lcode A0 0
+__Hstrings 31 0 STRING
+__Lstrings 31 0 STRING
+__Htemp 71 0 BANK0
+__Ltemp 71 0 BANK0
+__Hinit 28 0 CODE
+__Linit 24 0 CODE
+powerup 20 0 CODE
+__Htext A0 0
+__Ltext A0 0
+__Hpowerup 24 0 CODE
+__Lpowerup 20 0 CODE
+__Hvectors 1 0 CODE
+__Lvectors 1 0 CODE
+__Hclrtext 31 0 CODE
+__Lclrtext 2A 0 CODE
+int_restore 14 0 CODE
+save_code_ptr D 0 CODE
+__Hidloc 2000 0 IDLOC
+__Lidloc 2000 0 IDLOC
+__Hpstrings 31 0 CODE
+__Lpstrings 31 0 CODE
+__Hend_init 2A 0 CODE
+__Lend_init 28 0 CODE
+int_func D 0 CODE
+__Hnvram 25 0 BANK0
+__Lnvram 25 0 BANK0
+__Hxtemp 28 0 BANK0
+__Lxtemp 28 0 BANK0
+code_ptr 28 0 BANK0
+__Hfloat_text0 1 0 CODE
+__Lfloat_text0 1 0 CODE
+__Hcode_ptr 28 0 BANK0
+__Lcode_ptr 28 0 BANK0
+__Hinit23 28 0 CODE
+__Linit23 28 0 CODE
+__Hfloat_text1 1 0 CODE
+__Lfloat_text1 1 0 CODE
+__Brbit_0 20 FFFFFF20 BANK0
+__Hrbit_0 100 FFFFFF20 BANK0
+__Lrbit_0 100 FFFFFF20 BANK0
+__Brbit_1 A0 FFFFFBA0 BANK1
+__Hrbss_0 25 0 BANK0
+__Hrbit_1 500 FFFFFBA0 BANK1
+__Lrbss_0 20 0 BANK0
+__Lrbit_1 500 FFFFFBA0 BANK1
+__Brbit_2 A0 FFFFFBA0 BANK2
+__Hrbss_1 A0 0 BANK1
+__Hrbit_2 500 FFFFFBA0 BANK2
+__Lrbss_1 A0 0 BANK1
+__Lrbit_2 500 FFFFFBA0 BANK2
+__Brbit_3 A0 FFFFFBA0 BANK3
+__Hrbss_2 A0 0 BANK2
+__Hrbit_3 500 FFFFFBA0 BANK3
+__Lrbss_2 A0 0 BANK2
+__Lrbit_3 500 FFFFFBA0 BANK3
+__Hrbss_3 A0 0 BANK3
+__Lrbss_3 A0 0 BANK3
+__Hintentry D 0 CODE
+__Lintentry 4 0 CODE
+intlevel0 4 0 CODE
+intlevel1 4 0 CODE
+__Hfloat_text2 1 0 CODE
+__Lfloat_text2 1 0 CODE
+__Hconfig 2007 0 CONFIG
+__Lconfig 2007 0 CONFIG
+__Hfloat_text3 1 0 CODE
+__Lfloat_text3 1 0 CODE
+clear_ram 2D 0 CODE
+_proc_interrupt 31 0 CODE
+__Hintret 19 0 CODE
+__Lintret 10 0 CODE
+__Hstruct 28 0 BANK0
+__Lstruct 28 0 BANK0
+clear_bank0 24 0 CODE
+_pwmCount 24 0 BANK0
+int_entry 4 0 CODE
+save_btemp10 D 0 CODE
+save_btemp0 D 0 CODE
+__Hfloat_text4 1 0 CODE
+__Lfloat_text4 1 0 CODE
+save_btemp1 D 0 CODE
+save_btemp11 D 0 CODE
+save_btemp2 D 0 CODE
+save_btemp3 D 0 CODE
+save_btemp12 D 0 CODE
+save_btemp4 D 0 CODE
+save_btemp5 D 0 CODE
+__Hcommon_ram A0 0
+__Lcommon_ram A0 0
+save_btemp13 D 0 CODE
+save_btemp6 D 0 CODE
+save_btemp7 D 0 CODE
+save_btemp14 D 0 CODE
+save_btemp8 D 0 CODE
+save_btemp9 D 0 CODE
+__Hidata_0 1 0 CODE
+__Lidata_0 1 0 CODE
+__Hrdata_0 25 0 BANK0
+__Lrdata_0 25 0 BANK0
+__Hidata_1 1 0 CODE
+__Lidata_1 1 0 CODE
+__Heeprom_data 2100 0 EEDATA
+__Leeprom_data 2100 0 EEDATA
+__Hrdata_1 A0 0 BANK1
+__Lrdata_1 A0 0 BANK1
+__Hidata_2 A0 0
+__Lidata_2 A0 0
+__Hrdata_2 A0 0 BANK2
+__Lrdata_2 A0 0 BANK2
+__Hidata_3 A0 0
+__Lidata_3 A0 0
+__Hrdata_3 A0 0 BANK3
+__Lrdata_3 A0 0 BANK3
+__Hnvram_1 A0 0 BANK1
+__Lnvram_1 A0 0 BANK1
+__Bnvbit_0 25 FFFFFEFD BANK0
+__Hnvbit_0 128 FFFFFEFD BANK0
+__Lnvbit_0 128 FFFFFEFD BANK0
+__Hnvram_2 A0 0 BANK2
+__Lnvram_2 A0 0 BANK2
+__Bnvbit_1 A0 FFFFFBA0 BANK1
+__Hnvbit_1 500 FFFFFBA0 BANK1
+__Lnvbit_1 500 FFFFFBA0 BANK1
+__Hnvram_3 A0 0 BANK3
+__Lnvram_3 A0 0 BANK3
+__Bnvbit_2 A0 FFFFFBA0 BANK2
+__Hnvbit_2 500 FFFFFBA0 BANK2
+__Lnvbit_2 500 FFFFFBA0 BANK2
+__Bnvbit_3 A0 FFFFFBA0 BANK3
+__Hnvbit_3 500 FFFFFBA0 BANK3
+__Lnvbit_3 500 FFFFFBA0 BANK3
+__Hstringtable 31 0 ENTRY
+__Lstringtable 31 0 ENTRY
+%segments
+reserved 0 1 CODE
+intentry 8 31 CODE
+powerup 40 EB CODE
+rbit_0 100 107 BANK0
+temp 71 71 COMBANK
+%locals
+D:\bb_motor\motor.obj
+_isr D 0 CODE
+fsr 4
+saved_w 71 0 COMBANK
+saved_fsr 26 0 BANK0
+saved_pclath 27 0 BANK0
+pclath A
+saved_status 25 0 BANK0
+status 3
+D:\bb_motor\motor.c
+44 5B 0 CODE
+45 5F 0 CODE
+46 61 0 CODE
+47 62 0 CODE
+48 64 0 CODE
+49 65 0 CODE
+50 67 0 CODE
+51 68 0 CODE
+53 69 0 CODE
+54 6C 0 CODE
+55 6D 0 CODE
+56 6F 0 CODE
+57 70 0 CODE
+59 71 0 CODE
+60 72 0 CODE
+61 73 0 CODE
+62 74 0 CODE
+64 75 0 CODE
+74 D 0 CODE
+76 E 0 CODE
+81 31 0 CODE
+82 33 0 CODE
+83 36 0 CODE
+84 3D 0 CODE
+85 46 0 CODE
+86 4F 0 CODE
+87 58 0 CODE
+90 59 0 CODE

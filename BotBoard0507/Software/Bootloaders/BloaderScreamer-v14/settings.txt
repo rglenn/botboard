@@ -1,0 +1,1 @@
+2,9600,20,"16F877A","D:\Documents and Settings\PICxpert.PICXPERTXP2\Desktop\BloaderScreamer-v14\16F877A\SerialTest\SerialTest-877A-20MHz.hex"

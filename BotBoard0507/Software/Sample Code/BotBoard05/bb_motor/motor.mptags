@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+Motor1Speed	D:\bb_motor\motor.c	24;"	v	line:24
+Motor2Speed	D:\bb_motor\motor.c	25;"	v	line:25
+Motor3Speed	D:\bb_motor\motor.c	26;"	v	line:26
+Motor4Speed	D:\bb_motor\motor.c	27;"	v	line:27
+PORTBIT::(adr,bit)((unsigned)(&adr)*8+(	D:\bb_motor\motor.c	5;"	d	line:5	file:
+_16F877	D:\bb_motor\motor.c	1;"	d	line:1	file:
+class	D:\bb_motor\motor.c	37;"	v	line:37
+delta	D:\bb_motor\motor.c	37;"	v	line:37
+isr	D:\bb_motor\motor.c	72;"	f	line:72	file:	signature:(void)
+main	D:\bb_motor\motor.c	42;"	f	line:42	signature:(void)
+proc_interrupt	D:\bb_motor\motor.c	31;"	p	line:31	file:	signature:(void)
+proc_interrupt	D:\bb_motor\motor.c	79;"	f	line:79	signature:(void)
+pwmCount	D:\bb_motor\motor.c	28;"	v	line:28
+reserved	D:\bb_motor\motor.c	37;"	v	line:37

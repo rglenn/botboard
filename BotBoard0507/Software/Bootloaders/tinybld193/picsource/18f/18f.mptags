@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+IntrareBootloader	C:\tinybld193\picsource\18f\tinybld18F2620.asm	58;"	l	line:58
+MainLoop	C:\tinybld193\picsource\18f\tinybld18F2620.asm	71;"	l	line:71
+Receive	C:\tinybld193\picsource\18f\tinybld18F2620.asm	160;"	l	line:160
+SendL	C:\tinybld193\picsource\18f\tinybld18F2620.asm	34;"	m	line:34
+Write	C:\tinybld193\picsource\18f\tinybld18F2620.asm	148;"	l	line:148
+baud	C:\tinybld193\picsource\18f\tinybld18F2620.asm	4;"	q	line:4
+eraseloop	C:\tinybld193\picsource\18f\tinybld18F2620.asm	112;"	l	line:112
+mainl	C:\tinybld193\picsource\18f\tinybld18F2620.asm	73;"	l	line:73
+noconfig	C:\tinybld193\picsource\18f\tinybld18F2620.asm	110;"	l	line:110
+noeeprom	C:\tinybld193\picsource\18f\tinybld18F2620.asm	103;"	l	line:103
+notrcv	C:\tinybld193\picsource\18f\tinybld18F2620.asm	173;"	l	line:173
+rcvoct	C:\tinybld193\picsource\18f\tinybld18F2620.asm	89;"	l	line:89
+rpt2	C:\tinybld193\picsource\18f\tinybld18F2620.asm	163;"	l	line:163
+rpt3	C:\tinybld193\picsource\18f\tinybld18F2620.asm	165;"	l	line:165
+rptc	C:\tinybld193\picsource\18f\tinybld18F2620.asm	167;"	l	line:167
+waitwre	C:\tinybld193\picsource\18f\tinybld18F2620.asm	135;"	l	line:135
+way_to_exit	C:\tinybld193\picsource\18f\tinybld18F2620.asm	181;"	l	line:181
+writebigloop	C:\tinybld193\picsource\18f\tinybld18F2620.asm	117;"	l	line:117
+writebyte	C:\tinybld193\picsource\18f\tinybld18F2620.asm	124;"	l	line:124
+writesloop	C:\tinybld193\picsource\18f\tinybld18F2620.asm	121;"	l	line:121
+xtal	C:\tinybld193\picsource\18f\tinybld18F2620.asm	3;"	q	line:3
+ziieroare	C:\tinybld193\picsource\18f\tinybld18F2620.asm	142;"	l	line:142

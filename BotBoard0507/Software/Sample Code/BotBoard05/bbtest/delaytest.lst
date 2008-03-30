@@ -1,0 +1,394 @@
+
+
+HI-TECH Software PICC Macro Assembler V8.05PL2
+                                                      Mon Oct 24 00:54:17 2005
+
+
+     1                           	processor	16F877A
+     2  0000                     indf	equ	0
+     3  0000                     rtcc	equ	1
+     4  0000                     pc	equ	2
+     5  0000                     pcl	equ	2
+     6  0000                     status	equ	3
+     7  0000                     fsr	equ	4
+     8  0000                     porta	equ	5
+     9  0000                     portb	equ	6
+    10  0000                     portc	equ	7
+    11  0000                     pclath	equ	10
+    12                           	psect	text0,local,class=CODE,delta=2
+    13                           	psect	text0
+    14                           # 11 "D:\bbtest\delaytest.c"
+    15                           psect reserved,class=CODE, delta=2 ;#
+    16                           
+    17  0000  2810               GOTO 0x10; Jump to init code ;#
+    18                           
+    19                           #
+    20                           	global	_main
+    21                           	signat	_main,88
+    22                           	psect	text0
+    23                           	file	"D:\bbtest\delaytest.c"
+    24                           	line	16
+    25                           
+    26  0040                     _main
+    27                           ;delaytest.c: 17: TRISA = 0b00000000;
+    28                           
+    29                           	line	17
+    30  0040  1683               	bsf	status,5
+    31  0041  1303               	bcf	status,6	;carry unused
+    32  0042  0185               	clrf	(((085h))^0x80)	;volatile
+    33                           ;delaytest.c: 18: TRISB = 0b00000000;
+    34                           
+    35                           	line	18
+    36  0043  0186               	clrf	(((086h))^0x80)	;volatile
+    37                           ;delaytest.c: 19: TRISC = 0b00000000;
+    38                           
+    39                           	line	19
+    40  0044  0187               	clrf	(((087h))^0x80)	;volatile
+    41                           ;delaytest.c: 23: PORTA = 0b00000000;
+    42                           
+    43                           	line	23
+    44  0045  1283               	bcf	status,5
+    45  0046  0185               	clrf	(((05h)))	;volatile
+    46                           ;delaytest.c: 24: PORTB = 0b00000000;
+    47                           
+    48                           	line	24
+    49  0047  0186               	clrf	(((06h)))	;volatile
+    50                           ;delaytest.c: 25: PORTC = 0b00000000;
+    51                           
+    52                           	line	25
+    53  0048  0187               	clrf	(((07h)))	;volatile
+    54                           ;delaytest.c: 29: ADCON1 = 7;
+    55                           
+    56                           	line	29
+    57  0049  3007               	movlw	((07h))
+    58                           	
+    59  004A  1683               	bsf	status,5
+    60  004B  009F               	movwf	(((09Fh))^0x80)	;volatile
+    61                           ;delaytest.c: 32: while(1) {
+    62                           
+    63                           	line	32
+    64                           
+    65  004C                     l3
+    66                           ;delaytest.c: 33: LED = !LED;
+    67                           
+    68                           	line	33
+    69  004C  1283               	bcf	status,5
+    70  004D  1303               	bcf	status,6	;carry unused
+    71  004E  3001               	movlw	1<<((038h)&7)
+    72  004F  0687               	xorwf	((038h)/8)&7fh
+    73                           ;delaytest.c: 34: DelayBigMs(500);
+    74                           
+    75                           	global	_DelayBigMs
+    76                           	signat	_DelayBigMs,4216
+    77                           	global	?_DelayBigMs
+    78                           	FNCALL	_main,_DelayBigMs
+    79                           	line	34
+    80  0050  30F4               	movlw	low(((01F4h)))
+    81  0051  00A1               	movwf	(((?_DelayBigMs)))
+    82  0052  3001               	movlw	high(((01F4h)))
+    83  0053  00A2               	movwf	(((?_DelayBigMs)))+1
+    84                           	
+    85  0054  2057               	call	(_DelayBigMs)
+    86                           ;delaytest.c: 35: }
+    87                           
+    88                           	line	35
+    89                           
+    90  0055                     l2
+    91                           	line	32
+    92  0055  284C               	goto	l3
+    93                           
+    94  0056                     l4
+    95                           ;delaytest.c: 36: }
+    96                           
+    97                           	line	36
+    98  0056                     l1
+    99                           	global	start
+   100  0056  281C               	ljmp	start
+   101                           	FNSIZE	_main,0,0
+   102                           ;delaytest.c: 38: static void interrupt isr(voi
+                                 d)
+   103                           
+   104                           ;delaytest.c: 39: {
+   105                           
+   106                           	signat	_isr,72
+   107                           	psect	text1,local,class=CODE,delta=2
+   108                           	psect	text1
+   109                           	line	39
+   110                           	psect	intcode,class=CODE,delta=2
+   111                           	psect	intcode
+   112                           
+   113  0014                     _isr
+   114                           	global	int_func
+   115  0014                     int_func
+   116                           ;delaytest.c: 40: return;
+   117                           
+   118                           	line	40
+   119  0014  2815               	goto	l5
+   120                           ;delaytest.c: 41: }
+   121                           
+   122                           	line	41
+   123  0015                     l5
+   124                           	local	_isr
+   125                           	FNROOT	_isr
+   126  0015  1303               	bcf	status,6	;carry unused
+   127  0016  1283               	bcf	status,5
+   128                           	psect	intsave_0,ovrld,class=COMBANK,space=1
+   129  0071                     saved_w
+   130  0071                     	ds	1
+   131                           	psect	intret,class=CODE,delta=2
+   132                           	psect	intret
+   133                           	global	int_restore
+   134  0017                     int_restore
+   135  0017  0824               	movf	saved_status,w
+   136  0018  0083               	movwf	status
+   137  0019  0EF1               	swapf	saved_w
+   138  001A  0E71               	swapf	saved_w,w
+   139  001B  0009               	retfie
+   140                           	FNSIZE	_isr,0,0
+   141                           	psect	intentry,class=CODE,delta=2
+   142                           	psect	intentry
+   143                           	global	int_entry
+   144  0004                     int_entry
+   145  0004  00F1               	movwf	saved_w
+   146  0005  0803               	movf	status,w
+   147  0006  0183               	clrf	status
+   148  0007  00A4               	movwf	saved_status
+   149                           	psect	intsave,class=BANK0,space=1
+   150                           	psect	intsave
+   151  0024                     saved_status	ds	1
+   152                           	psect	intentry
+   153                           	psect	intentry
+   154  0000                     _ACKDT	equ	1165
+   155  0000                     _ACKEN	equ	1164
+   156  0000                     _ACKSTAT	equ	1166
+   157  0000                     _ADCS0	equ	254
+   158  0000                     _ADCS1	equ	255
+   159  0000                     _ADDEN	equ	195
+   160  0000                     _ADFM	equ	1279
+   161  0000                     _ADGO	equ	250
+   162  0000                     _ADIE	equ	1126
+   163  0000                     _ADIF	equ	102
+   164  0000                     _ADON	equ	248
+   165  0000                     _BCLIE	equ	1131
+   166  0000                     _BCLIF	equ	107
+   167  0000                     _BOR	equ	1136
+   168  0000                     _BRGH	equ	1218
+   169  0000                     _CARRY	equ	24
+   170  0000                     _CCP1IE	equ	1122
+   171  0000                     _CCP1IF	equ	98
+   172  0000                     _CCP1M0	equ	184
+   173  0000                     _CCP1M1	equ	185
+   174  0000                     _CCP1M2	equ	186
+   175  0000                     _CCP1M3	equ	187
+   176  0000                     _CCP1X	equ	189
+   177  0000                     _CCP1Y	equ	188
+   178  0000                     _CCP2IE	equ	1128
+   179  0000                     _CCP2IF	equ	104
+   180  0000                     _CCP2M0	equ	232
+   181  0000                     _CCP2M1	equ	233
+   182  0000                     _CCP2M2	equ	234
+   183  0000                     _CCP2M3	equ	235
+   184  0000                     _CCP2X	equ	237
+   185  0000                     _CCP2Y	equ	236
+   186  0000                     _CHS0	equ	251
+   187  0000                     _CHS1	equ	252
+   188  0000                     _CHS2	equ	253
+   189  0000                     _CKP	equ	164
+   190  0000                     _CREN	equ	196
+   191  0000                     _CSRC	equ	1223
+   192  0000                     _DC	equ	25
+   193  0000                     _EEIE	equ	1132
+   194  0000                     _EEIF	equ	108
+   195  0000                     _EEPGD	equ	3175
+   196  0000                     _FERR	equ	194
+   197  0000                     _GCEN	equ	1167
+   198  0000                     _GIE	equ	95
+   199  0000                     _INTE	equ	92
+   200  0000                     _INTEDG	equ	1038
+   201  0000                     _INTF	equ	89
+   202  0000                     _IRP	equ	31
+   203  0000                     _LED	equ	56
+   204  0000                     _OERR	equ	193
+   205  0000                     _PCFG0	equ	1272
+   206  0000                     _PCFG1	equ	1273
+   207  0000                     _PCFG2	equ	1274
+   208  0000                     _PCFG3	equ	1275
+   209  0000                     _PD	equ	27
+   210  0000                     _PEIE	equ	94
+   211  0000                     _PEN	equ	1162
+   212  0000                     _POR	equ	1137
+   213  0000                     _PS0	equ	1032
+   214  0000                     _PS1	equ	1033
+   215  0000                     _PS2	equ	1034
+   216  0000                     _PSA	equ	1035
+   217  0000                     _RA0	equ	40
+   218  0000                     _RA1	equ	41
+   219  0000                     _RA2	equ	42
+   220  0000                     _RA3	equ	43
+   221  0000                     _RA4	equ	44
+   222  0000                     _RA5	equ	45
+   223  0000                     _RB0	equ	48
+   224  0000                     _RB1	equ	49
+   225  0000                     _RB2	equ	50
+   226  0000                     _RB3	equ	51
+   227  0000                     _RB4	equ	52
+   228  0000                     _RB5	equ	53
+   229  0000                     _RB6	equ	54
+   230  0000                     _RB7	equ	55
+   231  0000                     _RBIE	equ	91
+   232  0000                     _RBIF	equ	88
+   233  0000                     _RBPU	equ	1039
+   234  0000                     _RC0	equ	56
+   235  0000                     _RC1	equ	57
+   236  0000                     _RC2	equ	58
+   237  0000                     _RC3	equ	59
+   238  0000                     _RC4	equ	60
+   239  0000                     _RC5	equ	61
+   240  0000                     _RC6	equ	62
+   241  0000                     _RC7	equ	63
+   242  0000                     _RCEN	equ	1163
+   243  0000                     _RCIE	equ	1125
+   244  0000                     _RCIF	equ	101
+   245  0000                     _RD	equ	3168
+   246  0000                     _RP0	equ	29
+   247  0000                     _RP1	equ	30
+   248  0000                     _RSEN	equ	1161
+   249  0000                     _RX9	equ	198
+   250  0000                     _RX9D	equ	192
+   251  0000                     _SEN	equ	1160
+   252  0000                     _SPEN	equ	199
+   253  0000                     _SREN	equ	197
+   254  0000                     _SSPEN	equ	165
+   255  0000                     _SSPIE	equ	1123
+   256  0000                     _SSPIF	equ	99
+   257  0000                     _SSPM0	equ	160
+   258  0000                     _SSPM1	equ	161
+   259  0000                     _SSPM2	equ	162
+   260  0000                     _SSPM3	equ	163
+   261  0000                     _SSPOV	equ	166
+   262  0000                     _STAT_BF	equ	1184
+   263  0000                     _STAT_CKE	equ	1190
+   264  0000                     _STAT_DA	equ	1189
+   265  0000                     _STAT_P	equ	1188
+   266  0000                     _STAT_RW	equ	1186
+   267  0000                     _STAT_S	equ	1187
+   268  0000                     _STAT_SMP	equ	1191
+   269  0000                     _STAT_UA	equ	1185
+   270  0000                     _SYNC	equ	1220
+   271  0000                     _T0CS	equ	1037
+   272  0000                     _T0IE	equ	93
+   273  0000                     _T0IF	equ	90
+   274  0000                     _T0SE	equ	1036
+   275  0000                     _T1CKPS0	equ	132
+   276  0000                     _T1CKPS1	equ	133
+   277  0000                     _T1OSCEN	equ	131
+   278  0000                     _T1SYNC	equ	130
+   279  0000                     _T2CKPS0	equ	144
+   280  0000                     _T2CKPS1	equ	145
+   281  0000                     _TMR0IE	equ	93
+   282  0000                     _TMR0IF	equ	90
+   283  0000                     _TMR1CS	equ	129
+   284  0000                     _TMR1IE	equ	1120
+   285  0000                     _TMR1IF	equ	96
+   286  0000                     _TMR1ON	equ	128
+   287  0000                     _TMR2IE	equ	1121
+   288  0000                     _TMR2IF	equ	97
+   289  0000                     _TMR2ON	equ	146
+   290  0000                     _TO	equ	28
+   291  0000                     _TOUTPS0	equ	147
+   292  0000                     _TOUTPS1	equ	148
+   293  0000                     _TOUTPS2	equ	149
+   294  0000                     _TOUTPS3	equ	150
+   295  0000                     _TRISA0	equ	1064
+   296  0000                     _TRISA1	equ	1065
+   297  0000                     _TRISA2	equ	1066
+   298  0000                     _TRISA3	equ	1067
+   299  0000                     _TRISA4	equ	1068
+   300  0000                     _TRISA5	equ	1069
+   301  0000                     _TRISB0	equ	1072
+   302  0000                     _TRISB1	equ	1073
+   303  0000                     _TRISB2	equ	1074
+   304  0000                     _TRISB3	equ	1075
+   305  0000                     _TRISB4	equ	1076
+   306  0000                     _TRISB5	equ	1077
+   307  0000                     _TRISB6	equ	1078
+   308  0000                     _TRISB7	equ	1079
+   309  0000                     _TRISC0	equ	1080
+   310  0000                     _TRISC1	equ	1081
+   311  0000                     _TRISC2	equ	1082
+   312  0000                     _TRISC3	equ	1083
+   313  0000                     _TRISC4	equ	1084
+   314  0000                     _TRISC5	equ	1085
+   315  0000                     _TRISC6	equ	1086
+   316  0000                     _TRISC7	equ	1087
+   317  0000                     _TRMT	equ	1217
+   318  0000                     _TX9	equ	1222
+   319  0000                     _TX9D	equ	1216
+   320  0000                     _TXEN	equ	1221
+   321  0000                     _TXIE	equ	1124
+   322  0000                     _TXIF	equ	100
+   323  0000                     _WCOL	equ	167
+   324  0000                     _WR	equ	3169
+   325  0000                     _WREN	equ	3170
+   326  0000                     _WRERR	equ	3171
+   327  0000                     _ZERO	equ	26
+   328  0000                     _ADCON0	equ	31
+   329  0000                     _ADCON1	equ	159
+   330  0000                     _ADRESH	equ	30
+   331  0000                     _ADRESL	equ	158
+   332  0000                     _CCP1CON	equ	23
+   333  0000                     _CCP2CON	equ	29
+   334  0000                     _CCPR1H	equ	22
+   335  0000                     _CCPR1L	equ	21
+   336  0000                     _CCPR2H	equ	28
+   337  0000                     _CCPR2L	equ	27
+   338  0000                     _EEADR	equ	269
+   339  0000                     _EEADRH	equ	271
+   340  0000                     _EECON1	equ	396
+   341  0000                     _EECON2	equ	397
+   342  0000                     _EEDATA	equ	268
+   343  0000                     _EEDATH	equ	270
+   344  0000                     _FSR	equ	4
+   345  0000                     _INDF	equ	0
+   346  0000                     _INTCON	equ	11
+   347  0000                     _OPTION	equ	129
+   348  0000                     _PCL	equ	2
+   349  0000                     _PCLATH	equ	10
+   350  0000                     _PCON	equ	142
+   351  0000                     _PIE1	equ	140
+   352  0000                     _PIE2	equ	141
+   353  0000                     _PIR1	equ	12
+   354  0000                     _PIR2	equ	13
+   355  0000                     _PORTA	equ	5
+   356  0000                     _PORTB	equ	6
+   357  0000                     _PORTC	equ	7
+   358  0000                     _PR2	equ	146
+   359  0000                     _RCREG	equ	26
+   360  0000                     _RCSTA	equ	24
+   361  0000                     _SPBRG	equ	153
+   362  0000                     _SSPADD	equ	147
+   363  0000                     _SSPBUF	equ	19
+   364  0000                     _SSPCON	equ	20
+   365  0000                     _SSPCON2	equ	145
+   366  0000                     _SSPSTAT	equ	148
+   367  0000                     _STATUS	equ	3
+   368  0000                     _T1CON	equ	16
+   369  0000                     _T2CON	equ	18
+   370  0000                     _TMR0	equ	1
+   371  0000                     _TMR1H	equ	15
+   372  0000                     _TMR1L	equ	14
+   373  0000                     _TMR2	equ	17
+   374  0000                     _TRISA	equ	133
+   375  0000                     _TRISB	equ	134
+   376  0000                     _TRISC	equ	135
+   377  0000                     _TXREG	equ	25
+   378  0000                     _TXSTA	equ	152
+
+
+HI-TECH Software PICC Macro Assembler V8.05PL2
+Symbol Table                                          Mon Oct 24 00:54:17 2005
+
+          l1 0056            l2 0055            l3 004C            l4 0056  
+          l5 0015          _isr 0014         _main 0040  ?_DelayBigMs 0021  
+       start 001C       saved_w 0071   _DelayBigMs 0057     int_entry 0004  
+saved_status 0024        status 0003      int_func 0014   int_restore 0017  
