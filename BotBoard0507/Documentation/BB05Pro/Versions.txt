@@ -1,0 +1,49 @@
+BOTBOARD REV 1
+This version, originally known as BotBoard 04, became BotBoard05 Pro
+Rev. 1 fairly quickly when 2004 ended. It is characterized by a
+dual-layer construction, making milled versions difficult to build.
+
+How do I know if I have one?
+You don't - only 1 was ever made, and it never worked nicely.
+
+BOTBOARD REV 2
+This was the first 1-layer version, and much easier to build. It was
+the first version to boast an etched-on Revision number, and marked
+the move to 45 degree traces
+
+How do I know if I have one?
+You don't - only 1 was ever made. It was found to have traces far, FAR
+too small - in some cases they didn't even mill properly.
+
+BOTBOARD REV 3
+At last, a working protoype. This increased the size of power and
+signal traces for better millability, and added a resistor pulling
+down RB3 so that burning code into LVP-enabled PICs fresh out of the
+box would work.
+
+How do I know if I have one?
+Once again, you don't - only 1 was ever made. Almost immediately, the
+size of the vias on the wire links was increased so that 22 gauge wire
+could be used.
+
+BOTBOARD REV 4
+The distribution model. The only difference between this one and the
+Rev. 3 is the increase in size of the wire link vias, and a change of
+the Revision label.
+
+How do I know if I have one?
+If it says Rev. 4 on the bottom, and is green on top with no traces on
+the top, then this is what you have. Also check the orientation of the
+H Bridge chips - if they're orthogonal to the PIC, it's one of these.
+
+BOTBOARD REV 5
+This is the first mass-produced version. SV2 and the entire voltage
+regulator section were rotated, along with the H Bridges, and the
+entire layout was compressed. Around this time we also changed the
+L293D to the SN754410, a functional replacement at a slightly lower
+cost. This version also marks the return to a 2-layer construction.
+
+How do I know if I have one?
+It says Rev. 05 on the bottom, and has a green soldermask on both
+sides. The H Bridges are also parallel to the PIC, and the BotBoard 05
+and IEEE logos are on the top, rather than the bottom.
